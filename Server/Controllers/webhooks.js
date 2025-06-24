@@ -1,5 +1,6 @@
 import { Webhook } from "svix";
 import User from "../models/User.js"; // Add .js if using ES modules
+import dotenv from 'dotenv'
 
 // API controller function to handle Clerk webhooks
 export const clerkWebhooks = async (req, res) => {

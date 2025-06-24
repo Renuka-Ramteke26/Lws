@@ -15,7 +15,9 @@ app.use(cors())
 
 
 //routes
-app.get('/' , (req ,res)=> req.send("API Working"))
+app.get("/", (req, res) => {
+  res.send("API Working"); // ✅ RIGHT
+});
 
 //port
 const PORT = process.env.PORT || 5000
