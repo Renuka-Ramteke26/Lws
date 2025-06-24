@@ -1,2 +1,5 @@
 node_modules
 .env
+git remote set-url origin https://github.com/Renuka-Ramteke26/Lws.git
+
+git remote set-url origin https://github.com/YourUsername/YourRepoName.git
