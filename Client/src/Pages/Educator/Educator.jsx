@@ -7,12 +7,12 @@ import Footer from '../../Components/Educator/Footer.jsx'
 
 const Educator = () => {
   return (
-    <div className='text-default min-h-screen bg-white' >
+    <div className='flex flex-col min-h-screen text-default  bg-white' >
       <Navbar />
-      
-    <div className='flex'>
+       
+    <div className='flex flex-1'>
       <Sidebar/>
-      <div className='flex-1'>
+      <div className='flex-1 p-4'>
         {<Outlet />}</div>
       </div>
       <Footer/>

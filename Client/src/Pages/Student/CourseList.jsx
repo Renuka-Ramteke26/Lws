@@ -35,7 +35,7 @@ useEffect(()=>{
       <div >
         <h1 className='text-lg  font-semibold text-gray-800'>Course List</h1>
       <p className='text-gray-500'>
-       <span className='text-blue-600 cursor-pointer' onClick={()=>navigate('/')}> Home </span>/ <span>Course List</span>
+       <span className='text-blue-600 cursor-pointer' onClick={()=>navigate('/')}> Home </span>| <span>Course List</span>
       </p>
       </div>
       <Searchbar data ={input}/>
@@ -51,7 +51,10 @@ useEffect(()=>{
 }
 
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-16 gap-3 px-2 md:p-0'>
-    {filteredCourse.map((course ,index)=> <CourseCard key ={index} course={course}/>)}
+    {filteredCourse.length > 0 ? ( filteredCourse.map((course ,index)=> (<CourseCard key ={index} course={course}/>)))
+    :(
+      <p className='col-span-full text-center text-gray-500'>No Courses found </p>
+    )}
     </div>
    </div>
    <Footer/>

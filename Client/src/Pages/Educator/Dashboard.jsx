@@ -47,7 +47,7 @@ useEffect (()=>{
           </div>
           <div>
             <h2 className='pb-4 text-lg font-medium'>Latest Enrollments</h2>
-            <div className='flex flex-col items-center max-w-4x1 w-full overflow-hidden rounded-md bg-white border border-gray-500/20'>
+            <div className='flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20'>
             <table className='teble-fixed md:table-auto w-full overflow-hidden'>
               <thead className='text-gray-900 border-b border-gray-500/20 text-sm text-left'>
                 <tr>

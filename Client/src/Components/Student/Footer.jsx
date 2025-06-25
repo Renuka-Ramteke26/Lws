@@ -18,12 +18,12 @@ const Footer = () => {
           <li><a href="#">Privacy Policy</a></li>
         </ul>
       </div>
-      <div className='hidden md:flex  items-start w-full'> </div>
+      <div className='hidden md:flex  items-start w-full'> 
       <h2 className='font-semibold text-white mb-5'>
        Subscribe to our newsLetter
       </h2>
-      <p className='text-sm text-white/80'>The latest news , articles, and resources,sent to your inbox weekly.</p>
-      <div className='flex items-centergap-2 pt-4'>
+      <p className='text-sm text-white/80'>The latest news , articles, and resources,sent to your inbox weekly.</p></div>
+      <div className='flex items-center gap-2 pt-4'>
         <input type='email' placeholder='Enter your email' className='border border-gray-500 placeholder-gray-500 outline-none w-64 h-9 rounded px-2 
         text-sm text-white'/>
         <button className='bg-blue-600 w-24 h-9 text-white rounded'>Subscribe</button>

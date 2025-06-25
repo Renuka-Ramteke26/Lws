@@ -93,7 +93,16 @@ const AddCourse = () => {
 };
 
 const handleSubmit = async (e)=>{
-  e.preventDefault()
+  e.preventDefault();
+
+  console.log({
+    courseTitle,
+    coursePrice,
+    discount,
+    chapters,
+    image,
+    description: quillRef.current.root.innerHTML,
+  });
 };
 
 
@@ -108,11 +117,11 @@ const handleSubmit = async (e)=>{
 
 
   return (
-    <div className='h-screen overflow-scroll flex flex-col items-start justify-betweenmd:p-8 md:pb-0 p-4 pt-8 pb-0'>
-      <form onClick={handleSubmit} className='flex flex-col gap-4 max-w-md w-full text-gray-500' >
+    <div className='h-screen overflow-scroll flex flex-col items-start justify-between md:p-8 md:pb-0 p-4 pt-8 pb-0'>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-4 max-w-md w-full text-gray-500' >
         <div className='flex flex-col gap-1'>
           <p>Course Title</p>
-          <input onChange={e=> setCourseTitle(e.target.value)} value={courseTitle} type="text" placeholder='type here'
+          <input onChange={(e)=> setCourseTitle(e.target.value)} value={courseTitle} type="text" placeholder='type here'
            className='outline-none md:p-2.5 py-2 px-3 rounded border border-gray-500' required/>
 
         </div>
@@ -124,7 +133,7 @@ const handleSubmit = async (e)=>{
         <div className='flex item-center justify-between flex-wrap '>
           <div className='flex flex-col gap-1'>
             <p>Course Price</p>
-            <input onChange={e => setCoursePrice(e.target.value)} value={coursePrice} type="number" placeholder='0' className='outline-none 
+            <input onChange={(e) => setCoursePrice(e.target.value)} value={coursePrice} type="number" placeholder='0' className='outline-none 
             md:py-2.5 py-2 w-28 px-3 rounded border border-gray-500' required/>
           </div>
 
@@ -132,8 +141,8 @@ const handleSubmit = async (e)=>{
             <p>Course Thumbnail</p>
             <label htmlFor="thumbnailImage" className='flex items-center gap-3'>
               <img src={assets.file_upload_icon} alt=""  className='p-3 bg-blue-500 rounded'/>
-              <input type="file" id='thumbnailImage' onChange={e => setImage(e.target.files[0])} accept='image/*' hidden />
-              <img className='max-h-10' src={image ? URL.createObjectURL(image) : ''} alt="" />
+              <input type="file" id='thumbnailImage' onChange={(e) => setImage(e.target.files[0])} accept='image/*' hidden />
+              <img className='max-h-10' src={image ? URL.createObjectURL(image) : assets.placeholder_image } alt="Thumbnail Preview" />
             </label>
             
           </div>
@@ -141,7 +150,7 @@ const handleSubmit = async (e)=>{
         </div>
         <div className='flex flex-col gap-1'>
           <p>Discount %</p>
-          <input onChange={e => setDiscount(e.target.value)} value={discount} type="number" placeholder='0' min={0} max={100} className='outline-none
+          <input onChange={(e) => setDiscount(e.target.value)} value={discount} type="number" placeholder='0' min={0} max={100} className='outline-none
           md:py-2.5 py-2 w-28 px-3 rounded border border-gray-500' required />
 
         </div>
@@ -163,9 +172,11 @@ const handleSubmit = async (e)=>{
                 <div className='p-4'>
                   {chapter.chapterContent.map((lecture ,lectureIndex)=>(
                     <div key={lectureIndex} className='flex justify-between items-center mb-2'>
-                      <span>{lectureIndex + 1}{lecture.lectureTitle} - {lecture.lectureDuration} mins - 
-                        <a href ={lecture.lectureUrl} target='blank ' className='text-blue-500'>Link</a> -{lecture.isPreviewFree ? 'Free Preview' : 'Paid'}
-                      </span>
+                     <span>
+                       {lectureIndex + 1}. {lecture.lectureTitle} – {lecture.lectureDuration} mins – 
+                          <a href={lecture.lectureUrl} target='_blank' rel='noopener noreferrer' className='text-blue-500 mx-1'>Link</a> – 
+                               {lecture.isPreviewFree ? 'Free Preview' : 'Paid'}
+                         </span>
                       <img src={assets.cross_icon} alt="" onClick={()=>handleChapter('remove' , chapter.chapterId , lectureIndex)} className='cursor-pointer' />
  
                     </div>
@@ -226,12 +237,12 @@ const handleSubmit = async (e)=>{
 
           }
         </div>
-       <button type='button' className='w-full bg-blue-400 text-white px-4 py-2 rounded' onClick={handleAddLectureDetails}>Add</button>
+       <button type='submit' className='w-full bg-blue-400 text-white px-4 py-2 rounded' onClick={handleAddLectureDetails}>Submit Course</button>
 
       </form>
       
     </div>
   )
-}
+};
 
 export default AddCourse

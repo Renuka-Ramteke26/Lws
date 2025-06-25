@@ -14,7 +14,7 @@ const onSearchHandler =(e)=>{
 
   return (
    
-      <form onSubmit={onSearchHandler} className='max-w-x1 w-100 md:h-10 h-5 flex items-center bg-white border border-gray-500/20 rounded'> 
+      <form onSubmit={onSearchHandler} className='max-w-xl w-full md:h-10 h-9 flex items-center bg-white border border-gray-500/20 rounded'> 
         <img src={assets.search_icon} alt="search_icon" className='md:w-auto w-1 px-3'/>
         <input onChange={e=> setInput(e.target.value)}type='text' placeholder='Search for courses' className='w-full h-full outline-none text-gray-500/80'/>
         <button type='submit' className='bg-blue-600 rounded text-whitemd:px-1 px-7 md:py-1 py-1 mx-1'> Search</button>

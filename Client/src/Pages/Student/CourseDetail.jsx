@@ -7,7 +7,7 @@ import Footer from '../../Components/Student/Footer'
 import YouTube from 'react-youtube'
 const CourseDetail = () => {
 
-const {id} = useParams()
+const {id} = useParams();
 
 const[courseData ,setCourseData] = useState(null)
 const [openSections, setOpenSections] = useState({})
@@ -16,7 +16,7 @@ const [playerData, setPlayerData] = useState(null)
 
 
 const {allcourses , calculateRating ,calculateChapterTime 
-  ,calculateNoOfLectures,calculateCourseduration , currency} = useContext(AppContext)
+  ,calculateNoOfLectures,calculateCourseduration , currency} = useContext(AppContext);
 
 const fetchCoursedata =async () => {
    const findCourse = allcourses.find(course => course._id === id)
@@ -32,8 +32,8 @@ const toggleSection=(index)=>{
     {...prev,
       [index]: !prev[index],
     }
-  ))
-}
+  ));
+};
 
 
  
@@ -60,15 +60,15 @@ if (! courseData) {
                   <p>{calculateRating(courseData)}</p>
                   <div className='flex'>
                       {[...Array(5)].map((_, i) => ( <img key={i} src={i < Math.floor(calculateRating(courseData)) ? assets.star : assets.star_blank}
-          alt="" className="w-3.5 h-3.5"/>))}
+          alt="star" className="w-3.5 h-3.5"/>))}
       
                   </div>
                   <p className='text-gray-500'>
-  ({courseData.courseRating?.length || 0} {courseData.courseRating?.length === 1 ? 'rating' : 'ratings'})
+  ({courseData.courseRating?.length || 0}{' '} {courseData.courseRating?.length === 1 ? 'rating' : 'ratings'})
 </p>
 
 <p>
-  {courseData.enrolledStudents?.length || 0} {courseData.enrolledStudents?.length === 1 ? 'student' : 'students'}
+  {courseData.enrolledStudents?.length || 0}{' '} {courseData.enrolledStudents?.length === 1 ? 'student' : 'students'}
 </p>
 
 <p className='text-sm'>
@@ -86,7 +86,7 @@ if (! courseData) {
             <p className='font-medium md:text-base text-sm'>{chapter.chapterTitle}</p>
 
           </div>
-          <p className='text-sm md:text-default'>{chapter.chapterContent.length}lectures-{calculateChapterTime(chapter)}</p>
+          <p className='text-sm md:text-default'>{chapter.chapterContent.length}lectures- {calculateChapterTime(chapter)}</p>
         </div>
         <div className={`overflow-hidden transition-all duration-300 ${openSections[index]? 'max-h-96' : 'max-h-0'}`}>
           <ul className='list-disc md:pl-10 pl-4 pr-4 py-2 text-gray-600 border-t border-gray-600'>
@@ -107,6 +107,7 @@ if (! courseData) {
   </div>
 
 </div>
+{/* course description */}
 <div className='py-20 text-sm md:text-default'>
 <h3 className='text-xl font-semibold text-gray-800'>Course Description</h3>
  <p className='pt-3 rich-text'
@@ -132,7 +133,7 @@ if (! courseData) {
 
         }
        
-        <div className='pt-5'>
+        <div className='pt-5 px-4'>
           <div className='flex item-center gap-2'>
             
                     <img  className ='w-3.5'src={assets.time_left_clock_icon} alt="time left clock icon" />

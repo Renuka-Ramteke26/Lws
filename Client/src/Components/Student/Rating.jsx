@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 const Rating = () => {
 
- const[rating ,setRating] =useState(initialRating || 0)
+const Rating = ({ initialRating = 0, onRate }) => {
+  const [rating, setRating] = useState(initialRating);
 
  const handleRating =(value) =>{
   setRating(value);
   if(onRate) onRate(value)
- }
+ }};
 
  useEffect(()=>{
       if(initialRating){

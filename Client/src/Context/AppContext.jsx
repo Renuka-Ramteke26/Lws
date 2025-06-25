@@ -22,9 +22,7 @@ export const AppContextProvider = (props) => {
     const {getToken} =useAuth()
     const {user} =useUser()
 
-    useEffect(() => {
-        fetchAllCourses();
-    }, []);
+    
 
     const fetchAllCourses = async () => {
         // In a real app, you'd fetch from an API. Here it's static:
@@ -43,15 +41,19 @@ export const AppContextProvider = (props) => {
  const calculateChapterTime = (chapter)=>{
     let time =0 
     chapter.chapterContent.map((lecture)=> time+= lecture.lectureDuration)
-    return humanizeDuration(time * 60 * 100 , {unit : ["h" ,"m"]})
+    return humanizeDuration(time * 60 * 1000 , {units : ["h" ,"m"]})
  }
 
  //calculate total duration of course
  const calculateCourseduration = (course)=>{
     let time =0 
 
-    course.courseContent.map((chapter)=> chapter.chapterContent.map((lecture)=> time = lecture.lectureDuration))
-    return humanizeDuration(time * 60 * 100 , {unit : ["h" ,"m"]})
+     course.courseContent.forEach((chapter) =>
+    chapter.chapterContent.forEach((lecture) => {
+      time += lecture.lectureDuration;
+    })
+  );
+    return humanizeDuration(time * 60 * 1000 , {units : ["h" ,"m"]})
 
  }
 
