@@ -6,7 +6,6 @@ export const clerkWebhooks = async (req, res) => {
     try {
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
 
-        // Verify webhook
         whook.verify(
             JSON.stringify(req.body),
             {
@@ -55,3 +54,8 @@ export const clerkWebhooks = async (req, res) => {
         return res.status(400).json({ success: false, message: error.message });
     }
 };
+
+// ✅ This is the default export now
+export default function webhookHandler(req, res) {
+  res.status(200).send("Webhook received");
+}

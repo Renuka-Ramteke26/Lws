@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import connectDB from './configs/mongodb.js';
-import webhookHandler from './controllers/webhooks.js';
+import { webhookHandler , clerkWebhooks } from './controllers/webhooks.js';
 import educatorRouter from './Routes/educatorRoutes.js';
 import { clerkMiddleware } from '@clerk/express';
 import connectCloudinary from './configs/cloudinary.js';
@@ -20,6 +20,7 @@ await connectCloudinary()
 app.use(express.json()); // should come before other middlewares that rely on parsed body
 app.use(cors());
 app.use(clerkMiddleware());
+app.post('/clerk', clerkWebhooks);
 app.post('/api/webhooks', webhookHandler);
 
 
