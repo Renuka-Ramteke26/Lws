@@ -20,8 +20,8 @@ await connectCloudinary()
 app.use(express.json()); // should come before other middlewares that rely on parsed body
 app.use(cors());
 app.use(clerkMiddleware());
-app.post('/clerk', clerkWebhooks);
-app.post('/api/webhooks', webhookHandler);
+
+
 
 
 
@@ -31,6 +31,7 @@ app.get("/", (req, res) => {
 });
 app.post('/clerk', clerkWebhooks);
 app.use('/api/educator', educatorRouter);
+app.post('/api/webhooks', webhookHandler);
 
 // Start server
 const PORT = process.env.PORT || 5000;
