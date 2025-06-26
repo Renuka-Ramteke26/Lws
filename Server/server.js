@@ -6,6 +6,7 @@ import webhookHandler from './controllers/webhooks.js';
 import educatorRouter from './Routes/educatorRoutes.js';
 import { clerkMiddleware } from '@clerk/express';
 import connectCloudinary from './configs/cloudinary.js';
+import webhookHandler from './controllers/webhooks.js';
 
 
 // Initialize Express
@@ -19,6 +20,8 @@ await connectCloudinary()
 app.use(express.json()); // should come before other middlewares that rely on parsed body
 app.use(cors());
 app.use(clerkMiddleware());
+app.post('/api/webhooks', webhookHandler);
+
 
 
 // Routes
