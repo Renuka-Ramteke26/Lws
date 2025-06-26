@@ -6,7 +6,7 @@ import webhookHandler from './controllers/webhooks.js';
 import educatorRouter from './Routes/educatorRoutes.js';
 import { clerkMiddleware } from '@clerk/express';
 import connectCloudinary from './configs/cloudinary.js';
-import webhookHandler from './controllers/webhooks.js';
+
 
 
 // Initialize Express
