@@ -3,7 +3,7 @@ import Course from '../server/models/Course.js';
 // Get all published courses
 export const getAllCourse = async (req, res) => {
     try {
-        const courses = await Course.find({ isPublished: true })
+        const courses = await Course.find()
             .select(['-courseContent', '-enrolledStudents'])
             .populate({ path: 'educator' });
 
