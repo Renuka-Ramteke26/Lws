@@ -1,13 +1,15 @@
-import Course from "../models/Course.js";
+import Course from '../server/models/Course.js';
 
-//get all courses
-export const getAllCourse = async(req,res)=>{
+// Get all published courses
+export const getAllCourse = async (req, res) => {
     try {
-        const course = await Course.find({isPublished: true}).select
-        (['-courseContent','-enrolledStudents' ]).populate({path:'edocator'})
+        const courses = await Course.find({ isPublished: true })
+            .select(['-courseContent', '-enrolledStudents'])
+            .populate({ path: 'educator' });
 
-        res.json({ success: true, courses })
+        res.json({ success: true, courses });
     } catch (error) {
-        
+        console.error("Error fetching courses:", error);
+        res.status(500).json({ success: false, message: "Server error" });
     }
-}
+};
