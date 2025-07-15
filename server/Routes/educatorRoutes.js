@@ -1,15 +1,21 @@
 import express from 'express';
-import { addCourse, getEducatorCourses, updateRoleToEducator } from '../controllers/educatorController.js';
+import {
+  addCourse,
+  getEducatorCourses,
+  updateRoleToEducator,
+} from '../controllers/educatorController.js';
 import upload from '../configs/multer.js';
 import { protectEducator } from '../middlewares/authMiddleware.js';
 
 const educatorRouter = express.Router();
 
-// Add educator role
-educatorRouter.get('/update-role', (req, res) => {
-  res.send('This route exists, but use POST for actual updates');
-});
+// ✅ POST route for updating user role to educator (previously only had a dummy GET route)
+educatorRouter.post('/update-role', updateRoleToEducator);
+
+// ✅ Add a new course (image upload middleware and auth middleware)
 educatorRouter.post('/add-course', protectEducator, upload.single('image'), addCourse);
-educatorRouter.get('/courses', protectEducator, getEducatorCourses)
+
+// ✅ Get all courses by the educator
+educatorRouter.get('/courses', protectEducator, getEducatorCourses);
 
 export default educatorRouter;
