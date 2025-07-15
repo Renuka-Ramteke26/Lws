@@ -26,6 +26,7 @@ export const AppContextProvider = (props) => {
 
     const fetchAllCourses = async () => {
         // In a real app, you'd fetch from an API. Here it's static:
+        
         setAllCourses(dummyCourses);
     };
 //calculate average rating
